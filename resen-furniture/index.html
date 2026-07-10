@@ -580,12 +580,6 @@ const heroOverlay=document.querySelector('.hero-overlay');
 
 heroSlidesEl.innerHTML=heroSlides.map((url,i)=>'<div class="hero-slide'+(i===0?' active':'')+'" style="background-image:url('+url+')"></div>').join('');
 heroDotsEl.innerHTML=heroSlides.map((_,i)=>'<div class="hero-dot'+(i===0?' active':'')+'" data-index="'+i+'"></div>').join('');
-  if(i===0) cls+=' text-only';
-  if(i===0) cls+=' active';
-  let sty=url?' style="background-image:url('+url+')"':'';
-  return '<div class="'+cls+'"'+sty+'></div>';
-}).join('');
-heroDotsEl.innerHTML=heroSlides.map((_,i)=>'<div class="hero-dot'+(i===0?' active':'')+'" data-index="'+i+'"></div>').join('');
 
 function goSlide(i){
   currentSlide=i;
