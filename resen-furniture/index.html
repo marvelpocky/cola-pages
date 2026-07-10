@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resen Furniture — Premium Furniture Manufacturer &amp; Export</title>
-<meta name="description" content="Hebei Resen Furniture — Premium dining chairs, office chairs, bar stools manufacturer. OEM/ODM, automated production, global export.">
+<meta name="description" content="Resen Furniture — Stunning Your Space. Professional manufacturer of dining chairs, office chairs, bar stools. OEM/ODM factory direct.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
@@ -262,7 +262,7 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 
 <!-- Nav -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">RESEN</a>
+  <a href="#" class="nav-logo"><svg width="28" height="28" viewBox="0 0 28 28" style="vertical-align:-6px;margin-right:6px"><circle cx="14" cy="14" r="13" fill="none" stroke="var(--gold)" stroke-width="1.5"/><text x="14" y="19" text-anchor="middle" font-size="13" font-weight="700" fill="var(--gold)" font-family="Inter">R</text></svg>RESEN</a>
   <ul class="nav-links">
     <li><a href="#products" data-section="products">Products</a></li>
     <li><a href="#process" data-section="process">Process</a></li>
@@ -288,7 +288,7 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
   <div class="hero-overlay"></div>
   <div class="hero-pattern"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Hebei Resen Furniture Co., Ltd.</p>
+    <p class="hero-eyebrow">Stunning Your Space</p>
     <h1 class="hero-title">Crafting Furniture<br><em>for the World</em></h1>
     <p class="hero-desc">Professional manufacturer of dining chairs, office chairs, bar stools, and leisure furniture. Three automated production lines — Metal, Upholstery, Injection Moulding. OEM/ODM with factory-direct pricing.</p>
     <div class="hero-stats">
@@ -305,8 +305,8 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 <!-- Marquee -->
 <div class="marquee">
   <div class="marquee-inner">
-    <span>Dining Chairs</span><span>·</span><span>Office Chairs</span><span>·</span><span>Bar Stools</span><span>·</span><span>Sofa Chairs</span><span>·</span><span>Plastic Chairs</span><span>·</span><span>Storage Racks</span><span>·</span><span>OEM/ODM</span><span>·</span><span>Global Export</span><span>·</span>
-    <span>Dining Chairs</span><span>·</span><span>Office Chairs</span><span>·</span><span>Bar Stools</span><span>·</span><span>Sofa Chairs</span><span>·</span><span>Plastic Chairs</span><span>·</span><span>Storage Racks</span><span>·</span><span>OEM/ODM</span><span>·</span><span>Global Export</span><span>·</span>
+    <span>Fabric Dining Chairs</span><span>·</span><span>Plastic Chairs</span><span>·</span><span>Swivel Chairs</span><span>·</span><span>Office Chairs</span><span>·</span><span>Metal Chairs</span><span>·</span><span>Bar Stools</span><span>·</span><span>Leisure</span><span>·</span><span>Tables</span><span>·</span><span>OEM/ODM</span><span>·</span>
+    <span>Fabric Dining Chairs</span><span>·</span><span>Plastic Chairs</span><span>·</span><span>Swivel Chairs</span><span>·</span><span>Office Chairs</span><span>·</span><span>Metal Chairs</span><span>·</span><span>Bar Stools</span><span>·</span><span>Leisure</span><span>·</span><span>Tables</span><span>·</span><span>OEM/ODM</span><span>·</span>
   </div>
 </div>
 
@@ -411,8 +411,10 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
         <div class="form-group"><label>Product Interest</label>
           <select id="fCategory">
             <option value="">Select a category</option>
-            <option>Dining Chairs</option><option>Office Chairs</option><option>Bar Chairs</option>
-            <option>Sofa Chairs</option><option>Plastic Chairs</option><option>Leisure Sofas</option><option>Other</option>
+            <option>Fabric / PU Dining Chairs</option><option>Plastic Dining Chairs</option><option>Swivel Chairs</option>
+            <option>Office / Gaming Chairs</option><option>Metal Chairs</option><option>Bar Stools</option>
+            <option>Leisure Chairs</option><option>PE Rattan</option><option>Tables</option>
+            <option>Footstools</option><option>Trolley Carts</option><option>Other</option>
           </select>
         </div>
         <div class="form-group"><label>Estimated Quantity</label><input type="text" id="fQty" placeholder="e.g. 500 pieces"></div>
@@ -457,40 +459,88 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 <script>
 // ============ DATA ============
 const productCategories=[
-  {id:'dining',name:'Dining Chairs',desc:'Velvet · Leather · Plastic · Metal',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp'},
-  {id:'office',name:'Office Chairs',desc:'Leather · Mesh · Ergonomic',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp'},
-  {id:'bar',name:'Bar Chairs',desc:'Swivel · Adjustable · Metal',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp'},
-  {id:'sofa',name:'Sofa Chairs',desc:'Velvet · Fabric · Leisure',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp'},
-  {id:'plastic',name:'Plastic Chairs',desc:'Injection Moulded · Stackable',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp'},
-  {id:'other',name:'Storage & More',desc:'Trolley Carts · Racks · Footstools',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp'},
-];
-
-const allProducts=[
-  {cat:'dining',sub:'velvet',name:'Velvet Dining Chair With Gold Metal Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:200,sold:1470,badge:'Bestseller'},
-  {cat:'dining',sub:'leather',name:'Leather Chair Glossy Dining Conference',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4b913b0c685_685.webp',moq:200,sold:1033},
-  {cat:'dining',sub:'leather',name:'PU Single Chair Coffee Shop Square Pattern',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp',moq:200,sold:890},
-  {cat:'office',sub:'leather',name:'Leather Office Chair Swivel Lift High Armrests',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp',moq:100,sold:1220},
-  {cat:'office',sub:'mesh',name:'Office Chair Conference Swivel Wheels Mesh',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bfa28f2bf685_685.webp',moq:100,sold:680},
-  {cat:'bar',sub:'fixed',name:'Fabric High Bar Chair Solid Color Wooden Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200,sold:1821,badge:'Top'},
-  {cat:'bar',sub:'fixed',name:'Velvet Bar Chair Hotel High Metal Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c1ffb047b685_685.webp',moq:200,sold:861},
-  {cat:'bar',sub:'swivel',name:'Upholstered Bar Chair Check Soft Fabric Swivel',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c18491820685_685.webp',moq:200,sold:540},
-  {cat:'sofa',sub:'velvet',name:'Velvet Sofa Chair Single Soft Cloth',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:100,sold:1146,badge:'New'},
-  {cat:'sofa',sub:'fabric',name:'Patchwork Fabric Chair High Back Wooden Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b5e792793685_685.webp',moq:100,sold:350},
-  {cat:'sofa',sub:'fabric',name:'Living Room Sofa Chair Patchwork Fabric Armrests',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b68971555685_685.webp',moq:100,sold:280},
-  {cat:'plastic',sub:'all',name:'One Piece Plastic Dining Chair Hollow Back',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500,sold:360,badge:'Hot'},
-  {cat:'other',sub:'trolley',name:'Metal Multi-Layer Sliding Storage Rack',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp',moq:300,sold:670},
-  {cat:'other',sub:'storage',name:'PP Frame Foldable Storage Cabinet',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6b47eb742d685_685.webp',moq:300,sold:210},
-  {cat:'other',sub:'trolley',name:'3 Layer Metal Kitchen Rolling Cart',img:'https://www.hbdiningfurniture.com/data/watermark/20250305/67c7f6ac8ef05685_685.webp',moq:300,sold:430},
+  {id:'fabric-pu',name:'Fabric / PU Dining Chairs',desc:'HC-R · HC-U · HC-F Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp'},
+  {id:'plastic',name:'Plastic Dining Chairs',desc:'HC-P · HC-N Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp'},
+  {id:'swivel',name:'Swivel Chairs',desc:'HC-U F/S Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp'},
+  {id:'office',name:'Office / Gaming',desc:'HC-B · HC-G Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp'},
+  {id:'metal',name:'Metal Chairs',desc:'HC-M · HC-W Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp'},
+  {id:'bar',name:'Bar Stools',desc:'HB Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp'},
+  {id:'leisure',name:'Leisure Chairs',desc:'HS Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp'},
+  {id:'rattan',name:'PE Rattan Furniture',desc:'HR Series',img:'https://images.unsplash.com/photo-1616628188500-9a1b5b3c1b0e?w=500&h=400&fit=crop&auto=format'},
+  {id:'tables',name:'Tables',desc:'HT Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp'},
+  {id:'footstools',name:'Footstools',desc:'HF Series',img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&h=400&fit=crop&auto=format'},
+  {id:'trolley',name:'Trolley Carts',desc:'HZ Series',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp'},
 ];
 
 const subCats={
-  dining:[{id:'all',label:'All'},{id:'velvet',label:'Velvet'},{id:'leather',label:'Leather'},{id:'plastic',label:'Plastic'},{id:'metal',label:'Metal'}],
-  office:[{id:'all',label:'All'},{id:'leather',label:'Leather'},{id:'mesh',label:'Mesh Fabric'}],
-  bar:[{id:'all',label:'All'},{id:'swivel',label:'Swivel'},{id:'fixed',label:'Fixed Height'}],
-  sofa:[{id:'all',label:'All'},{id:'velvet',label:'Velvet'},{id:'fabric',label:'Fabric'},{id:'patchwork',label:'Patchwork'}],
-  plastic:[{id:'all',label:'All Plastic'}],
-  other:[{id:'all',label:'All'},{id:'trolley',label:'Trolley Carts'},{id:'storage',label:'Storage'}],
+  'fabric-pu':[{id:'all',label:'All'},{id:'hc-r',label:'HC-R (Velvet/Fabric)'},{id:'hc-u',label:'HC-U (PU Leather)'},{id:'hc-f',label:'HC-F (Fabric Accent)'}],
+  plastic:[{id:'all',label:'All'},{id:'hc-p',label:'HC-P Series'},{id:'hc-n',label:'HC-N Series'}],
+  swivel:[{id:'all',label:'All'}],
+  office:[{id:'all',label:'All'},{id:'hc-b',label:'HC-B (Office)'},{id:'hc-g',label:'HC-G (Gaming)'}],
+  metal:[{id:'all',label:'All'},{id:'hc-m',label:'HC-M Series'},{id:'hc-w',label:'HC-W Series'}],
+  bar:[{id:'all',label:'All'},{id:'hb-f',label:'HB-F (Fabric)'},{id:'hb-p',label:'HB-P (Plastic)'},{id:'hb-r',label:'HB-R (Velvet)'},{id:'hb-u',label:'HB-U (PU/Swivel)'},{id:'hb-w',label:'HB-W (Wooden)'}],
+  leisure:[{id:'all',label:'All'}],
+  rattan:[{id:'all',label:'All'}],
+  tables:[{id:'all',label:'All'},{id:'ht-m',label:'HT-M Series'},{id:'ht-g',label:'HT-G Series'},{id:'ht-t',label:'HT-T Series'},{id:'ht-s',label:'HT-S Series'}],
+  footstools:[{id:'all',label:'All'}],
+  trolley:[{id:'all',label:'All'}],
 };
+
+const allProducts=[
+  {cat:'fabric-pu',sub:'hc-r',name:'HC-R01 / R01A / R01D / R02',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-r',name:'HC-R03 / R04 / R05 / R05A',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-r',name:'HC-R05H / R05J / R05W / R06',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-r',name:'HC-R07 / R08 / R08B / R08F / R08H',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-r',name:'HC-R09 / R15 / R15A / R16 / R17',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-r',name:'HC-R17A / R17D / R17H / R18 / R21',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-r',name:'HC-R22 / R30 / R32 / R33 / R34B',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-u',name:'HC-U05 / U05A / U06 / U06M',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-u',name:'HC-U08 / U08B / U09 / U12',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-u',name:'HC-U15 / U15D / U17 / U22 / U22A',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-u',name:'HC-U22B / U22D / U23 / U25 / U47',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-u',name:'HC-U51 / U52 / U53 / U54 / U81 / U83',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-f',name:'HC-F01 / F01M / F01W / F02 / F02M',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b5e792793685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-f',name:'HC-F02R / F02S / F02W / F03 / F03D',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b5e792793685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-f',name:'HC-F03H / F03J / F03M / F05A / F06',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b5e792793685_685.webp',moq:200},
+  {cat:'fabric-pu',sub:'hc-f',name:'HC-F06B / F06H / F07 / F07A / F07B / F10',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b5e792793685_685.webp',moq:200},
+  {cat:'plastic',sub:'hc-p',name:'HC-P01 / P01A-M / P01K / P01P / P01W',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-p',name:'HC-P02 / P02F-P / PR / PW',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-p',name:'HC-P03 / P03A-Y',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-p',name:'HC-P07A / P07B / P07H / P12 / P14',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-p',name:'HC-P15 / P16 / P30 / P70 / P73',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-p',name:'HC-P80-P83 / P86-89 / P89A-B / P92',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-p',name:'HC-P97 / P98 / P99 / P100',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-n',name:'HC-N01 / N03 / N06-N12 / N14-N19',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-n',name:'HC-N23-N24 / N26-N37 / N39-N43',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-n',name:'HC-N47-N48 / N50-N51 / N53',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'plastic',sub:'hc-n',name:'HC-N87 / N90-N91 / N91A / N92 / N92A',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500},
+  {cat:'swivel',sub:'all',name:'HC-U05F / U06F / U06S / U60 Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp',moq:200},
+  {cat:'swivel',sub:'all',name:'HC-U62-U64 / U68-U69 / U72-U73 / U77',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp',moq:200},
+  {cat:'office',sub:'hc-b',name:'HC-B01-B05 / B08-B10 / B12 / B17-B18',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp',moq:100},
+  {cat:'office',sub:'hc-b',name:'HC-B20-B24 / B24A / B30 / B31',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bfa28f2bf685_685.webp',moq:100},
+  {cat:'office',sub:'hc-g',name:'HC-G01 / G02',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp',moq:100},
+  {cat:'metal',sub:'hc-m',name:'HC-M01 / M02 / M04 / M15 / M19 / M22-M23',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp',moq:200},
+  {cat:'metal',sub:'hc-w',name:'HC-W01-W12 / W14-W16',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp',moq:200},
+  {cat:'bar',sub:'hb-f',name:'HB-F01 / F05 / F08 / H09',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200},
+  {cat:'bar',sub:'hb-p',name:'HB-P01-P03-P08 / P09S-P12S / P80-P82',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200},
+  {cat:'bar',sub:'hb-r',name:'HB-R01-02 / R08 / R11 / R21 / R30',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c1ffb047b685_685.webp',moq:200},
+  {cat:'bar',sub:'hb-u',name:'HB-U05-U09 / U60AS-U76S',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200},
+  {cat:'bar',sub:'hb-w',name:'HB-W01 / W02 / W06',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200},
+  {cat:'leisure',sub:'all',name:'HS-03 / HS-03T / HS-05-07 / HS-09',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:100},
+  {cat:'leisure',sub:'all',name:'HS-11-12 / HS-14 / HS-18-21 / HS-26',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b68971555685_685.webp',moq:100},
+  {cat:'rattan',sub:'all',name:'HR-01 / HR-03 / HR-02T',img:'https://images.unsplash.com/photo-1616628188500-9a1b5b3c1b0e?w=500&h=400&fit=crop&auto=format',moq:100},
+  {cat:'tables',sub:'ht-m',name:'HT-M01-M08 / M15-M18 / M20-M22',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:50},
+  {cat:'tables',sub:'ht-m',name:'HT-M25 / M31 / M33 / M42 / M51-M54 / M64 / M69',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:50},
+  {cat:'tables',sub:'ht-g',name:'HT-G01-G04 / G07 / G12 / G15 / G18 / G23',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:50},
+  {cat:'tables',sub:'ht-t',name:'HT-T01-T08',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:50},
+  {cat:'tables',sub:'ht-s',name:'HT-S05 / S07 / S08',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:50},
+  {cat:'footstools',sub:'all',name:'HF-07 / HF-09 / HF-09A',img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&h=400&fit=crop&auto=format',moq:200},
+  {cat:'footstools',sub:'all',name:'HF-10-12 / HF-15-17 / HF-L1 / HF-L2',img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&h=400&fit=crop&auto=format',moq:200},
+  {cat:'trolley',sub:'all',name:'HZ-01 / HZ-02 / HZ-03 / HZ-04',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp',moq:300},
+  {cat:'trolley',sub:'all',name:'HZ-05 / HZ-06 / HZ-07',img:'https://www.hbdiningfurniture.com/data/watermark/20250305/67c7f6ac8ef05685_685.webp',moq:300},
+];
+
+
 
 const processSteps=[
   {n:1,title:'Design & Prototyping',desc:'Our in-house designers gather your requirements — style, material, budget, application — and create detailed production plans. For OEM clients, we translate your drawings into manufacturable specs with 3D sampling.',img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=440&h=260&fit=crop&auto=format'},
@@ -501,7 +551,7 @@ const processSteps=[
 ];
 
 const caseImages=[
-  {label:'Hotel Project — Eastern Europe',tag:'Contract',img:'https://images.unsplash.com/photo-1564078516393-cf04bdadeccc?w=600&h=450&fit=crop&auto=format'},
+  {label:'Hotel Project — Eastern Europe',tag:'Contract',img:'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop&auto=format'},
   {label:'Restaurant Chain — South America',tag:'Bulk Order',img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=450&fit=crop&auto=format'},
   {label:'Office Fit-out — Western Europe',tag:'OEM',img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop&auto=format'},
   {label:'Cafe Chain — Middle East',tag:'Custom',img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=450&fit=crop&auto=format'},
@@ -518,10 +568,10 @@ animCursor();
 
 // ============ HERO CAROUSEL ============
 const heroSlides=[
-  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&h=900&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1617806118233-18e1de3b5db2?w=1600&h=900&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&h=900&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1600&h=900&fit=crop&auto=format',
+  'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',
+  'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp',
+  'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',
+  'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',
 ];
 const heroSlidesEl=document.getElementById('heroSlides');
 const heroDotsEl=document.getElementById('heroDots');
@@ -606,7 +656,7 @@ window.addEventListener('load',()=>{
 const catGrid=document.getElementById('catGrid');
 const subcatBar=document.getElementById('subcatBar');
 const productGrid=document.getElementById('productGrid');
-let activeCat='dining',activeSub='all';
+let activeCat='fabric-pu',activeSub='all';
 
 // Render category cards
 function renderCats(){
