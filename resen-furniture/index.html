@@ -575,30 +575,12 @@ const heroSlides=[
 const heroSlidesEl=document.getElementById('heroSlides');
 const heroDotsEl=document.getElementById('heroDots');
 let currentSlide=0,heroInterval;
-
 heroSlidesEl.innerHTML=heroSlides.map((url,i)=>'<div class="hero-slide'+(i===0?' active':'')+'" style="background-image:url('+url+')"></div>').join('');
 heroDotsEl.innerHTML=heroSlides.map((_,i)=>'<div class="hero-dot'+(i===0?' active':'')+'" data-index="'+i+'"></div>').join('');
-
 function goSlide(i){currentSlide=i;heroSlidesEl.querySelectorAll('.hero-slide').forEach((s,n)=>s.classList.toggle('active',n===i));heroDotsEl.querySelectorAll('.hero-dot').forEach((d,n)=>d.classList.toggle('active',n===i))}
 function nextSlide(){goSlide((currentSlide+1)%4)}
 heroInterval=setInterval(nextSlide,5000);
 heroDotsEl.addEventListener('click',e=>{var d=e.target.closest('.hero-dot');if(!d)return;clearInterval(heroInterval);goSlide(+d.dataset.index);heroInterval=setInterval(nextSlide,5000)});
-function nextSlide(){goSlide((currentSlide+1)%heroSlides.length)}
-
-heroInterval=setInterval(nextSlide,5000);
-
-heroDotsEl.addEventListener('click',e=>{
-  const dot=e.target.closest('.hero-dot');
-  if(!dot)return;
-  clearInterval(heroInterval);
-  goSlide(parseInt(dot.dataset.index));
-  heroInterval=setInterval(nextSlide,5000);
-});
-
-document.querySelectorAll('a,button,.cat-card,.product-card,input,textarea,select,.factory,.hero-dot').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
-});
 
 // ============ NAV ============
 const nav=document.getElementById('nav');
