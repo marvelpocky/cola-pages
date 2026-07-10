@@ -66,7 +66,12 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
    ======================================== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1c}
 .hero-slides{position:absolute;inset:0;z-index:0}
-.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s var(--ease-out)}
+.hero-slide.text-only{background:var(--bg);background-image:
+  radial-gradient(ellipse at 30% 20%,rgba(201,160,80,.06) 0%,transparent 60%),
+  radial-gradient(ellipse at 70% 80%,rgba(201,160,80,.04) 0%,transparent 50%),
+  linear-gradient(135deg,rgba(201,160,80,.03) 1px,transparent 1px),
+  linear-gradient(45deg,rgba(201,160,80,.02) 1px,transparent 1px);
+  background-size:100% 100%,100% 100%,40px 40px,40px 40px}
 .hero-slide.active{opacity:1}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,28,.65) 0%,rgba(26,26,28,.75) 50%,rgba(26,26,28,.9) 100%);z-index:1;pointer-events:none;transition:opacity .8s}
 .hero-overlay.hidden{opacity:0}
@@ -581,7 +586,7 @@ let currentSlide=0,heroInterval;
 
 const heroOverlay=document.querySelector('.hero-overlay');
 
-heroSlidesEl.innerHTML=heroSlides.map((url,i)=>`<div class="hero-slide${i===0?' active':''}"${url?` style="background-image:url(${url})"`:''}></div>`).join('');
+heroSlidesEl.innerHTML=heroSlides.map((url,i)=>`<div class="hero-slide${i===0?' text-only active':' '}"${url?` style="background-image:url(${url})"`:''}></div>`).join('');
 heroDotsEl.innerHTML=heroSlides.map((_,i)=>`<div class="hero-dot${i===0?' active':''}" data-index="${i}"></div>`).join('');
 
 function goSlide(i){
