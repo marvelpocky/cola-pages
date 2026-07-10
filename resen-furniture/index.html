@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resen Furniture — Premium Furniture Manufacturer &amp; Export</title>
+<meta name="description" content="Hebei Resen Furniture — Premium dining chairs, office chairs, bar stools manufacturer. OEM/ODM, automated production, global export.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ========================================
+   RESET & VARIABLES
+   ======================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',-apple-system,sans-serif;background:#1a1a1c;color:#e8e6e1;overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;font-family:inherit;background:none}
+:root{
+  --gold:#c9a050;--gold-light:#e0c878;--gold-dim:#8b7038;
+  --gold-subtle:rgba(201,160,80,.1);
+  --bg:#1a1a1c;--bg2:#262628;--bg3:#303032;
+  --text:#e8e6e1;--text-dim:rgba(232,230,225,.55);--text-light:rgba(232,230,225,.35);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.04);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.2);
+  --shadow-md:0 8px 30px rgba(0,0,0,.3);
+  --shadow-lg:0 20px 60px rgba(0,0,0,.4);
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+  --ease-out:cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ========================================
+   CURSOR
+   ======================================== */
+.cursor{position:fixed;width:22px;height:22px;border:2px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s,width .3s,height .3s,border-color .3s;transform:translate(-50%,-50%)}
+.cursor.hover{width:58px;height:58px;border-color:var(--gold-light);background:rgba(201,160,80,.08)}
+.cursor-dot{position:fixed;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s}
+@media(hover:none),(pointer:coarse){.cursor,.cursor-dot{display:none}}
+
+/* ========================================
+   NAV
+   ======================================== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:72px;transition:background .4s,box-shadow .4s;color:#fff}
+.nav.scrolled{background:rgba(26,26,28,.92);backdrop-filter:blur(24px);box-shadow:var(--shadow-sm);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:1px;transition:color .3s}
+.nav.scrolled .nav-logo{color:var(--gold)}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.55);transition:color .3s;text-transform:uppercase;letter-spacing:1.5px}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a.active{color:var(--gold)}
+.nav-cta{color:var(--gold)!important;border:1.5px solid var(--gold);padding:9px 22px;border-radius:100px;transition:all .3s!important}
+.nav-cta:hover{background:var(--gold)!important;color:#1a1a1c!important}
+.nav-toggle{display:none;font-size:1.4rem;color:#fff}
+
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(26,26,28,.98);flex-direction:column;justify-content:center;align-items:center;gap:28px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{font-size:1.3rem;font-weight:600;color:var(--text)}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu a.active{color:var(--gold);font-weight:700}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1c}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s var(--ease-out)}
+.hero-slide.active{opacity:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,28,.75) 0%,rgba(26,26,28,.85) 50%,rgba(26,26,28,.95) 100%);z-index:1}
+.hero-pattern{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a050' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;z-index:2}
+.hero-dots{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .4s}
+.hero-dot.active{background:var(--gold);width:24px;border-radius:4px}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:900px;padding:120px 32px 80px}
+.hero-eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:5px;color:var(--gold);margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .3s var(--ease-out) forwards}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;color:#fff;opacity:0;transform:translateY(30px);animation:fadeUp .8s .5s var(--ease-out) forwards}
+.hero-title em{font-style:italic;color:var(--gold-light);display:block}
+.hero-desc{font-size:1.1rem;color:var(--text-dim);max-width:520px;margin:0 auto 48px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .7s var(--ease-out) forwards}
+.hero-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:fadeUp .8s .9s var(--ease-out) forwards}
+.hero-stat{text-align:center}
+.hero-stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1}
+.hero-stat-l{font-size:.72rem;color:var(--text-light);margin-top:6px;text-transform:uppercase;letter-spacing:1.5px}
+.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);color:var(--text-light);font-size:.7rem;letter-spacing:3px;text-transform:uppercase;animation:bounce 2s infinite;z-index:1}
+.scroll-hint::after{content:'';display:block;width:1px;height:36px;background:var(--gold-dim);margin:10px auto 0}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ========================================
+   MARQUEE
+   ======================================== */
+.marquee{background:var(--gold);color:#1a1a1c;padding:12px 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:marquee 25s linear infinite}
+.marquee span{display:inline-block;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;padding:0 32px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ========================================
+   SECTION
+   ======================================== */
+.section{padding:120px 48px;position:relative}
+.section-dark{background:var(--bg3)}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-tag{font-size:.72rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:16px;display:block;font-weight:600}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:700;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+.section-desc{color:var(--text-dim);font-size:1.05rem;max-width:460px}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+
+/* ========================================
+   PRODUCT CAROUSEL
+   ======================================== */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:48px}
+.cat-card{position:relative;background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .4s;box-shadow:var(--shadow-sm)}
+.cat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--gold-dim)}
+.cat-card.active{border-color:var(--gold);background:var(--gold-subtle)}
+.cat-card-img{height:180px;overflow:hidden;position:relative}
+.cat-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cat-card:hover .cat-card-img img{transform:scale(1.06)}
+.cat-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.45) 100%)}
+.cat-card-body{position:absolute;bottom:0;left:0;right:0;padding:20px;color:#fff}
+.cat-card h4{font-size:1rem;font-weight:700;margin-bottom:2px}
+.cat-card p{font-size:.74rem;opacity:.8}
+.cat-card-count{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.5);color:#fff;font-size:.68rem;padding:3px 10px;border-radius:100px;font-weight:600;backdrop-filter:blur(4px)}
+
+/* Product grid */
+.subcat-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+.subcat-pill{padding:7px 16px;border-radius:100px;font-size:.8rem;font-weight:500;background:var(--bg);color:var(--text-dim);border:1px solid var(--border);cursor:pointer;transition:all .25s}
+.subcat-pill:hover{border-color:var(--gold-dim);color:var(--gold)}
+.subcat-pill.active{background:var(--gold);color:#1a1a1c;border-color:var(--gold)}
+
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:28px}
+.product-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:transform .35s,box-shadow .35s;box-shadow:var(--shadow-sm);position:relative}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.product-card-img{height:220px;overflow:hidden;position:relative}
+.product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.product-card:hover .product-card-img img{transform:scale(1.04)}
+.product-card-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:#1a1a1c;font-size:.66rem;padding:4px 10px;border-radius:100px;font-weight:700;text-transform:uppercase;letter-spacing:1px;z-index:1}
+.product-card-body{padding:14px 16px 0}
+.product-card h4{font-size:.92rem;font-weight:600;margin-bottom:6px;line-height:1.3;color:var(--text)}
+.product-card-meta{display:flex;gap:16px;font-size:.76rem;color:var(--text-light);margin-bottom:12px}
+.product-card-meta i{margin-right:3px;color:var(--gold-dim)}
+.product-inquire{width:100%;padding:10px;background:var(--gold-subtle);color:var(--gold);font-size:.8rem;font-weight:600;border-radius:0 0 10px 10px;transition:all .3s;border-top:1px solid var(--border);cursor:pointer}
+.product-inquire:hover{background:var(--gold);color:#1a1a1c}
+.product-empty{grid-column:1/-1;text-align:center;padding:32px;color:var(--text-light)}
+@media(max-width:600px){.cat-grid{grid-template-columns:1fr 1fr}.product-grid{grid-template-columns:1fr}}
+
+/* ========================================
+   PROCESS
+   ======================================== */
+.process-timeline{position:relative;margin-top:56px;padding-left:40px}
+.process-timeline::before{content:'';position:absolute;left:17px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(180deg,var(--gold),var(--gold-dim),var(--border))}
+.process-step{display:grid;grid-template-columns:auto 1fr 220px;gap:24px;align-items:center;margin-bottom:36px;position:relative}
+.process-step:last-child{margin-bottom:0}
+.process-step-num{width:36px;height:36px;min-width:36px;border-radius:50%;background:var(--gold);color:#1a1a1c;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;z-index:1}
+.process-step-info h4{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.process-step-info p{font-size:.88rem;color:var(--text-dim);line-height:1.6}
+.process-step-img{height:130px;border-radius:10px;overflow:hidden}
+.process-step-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.process-step:hover .process-step-img img{transform:scale(1.06)}
+@media(max-width:768px){.process-timeline{padding-left:32px}.process-step{grid-template-columns:auto 1fr;gap:16px}.process-step-img{display:none}}
+
+/* ========================================
+   STRENGTHS
+   ======================================== */
+.case-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.case-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.case-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.case-item:hover img{transform:scale(1.06)}
+.case-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.5) 100%)}
+.case-item-label{position:absolute;bottom:16px;left:16px;right:16px;color:#fff;font-size:.85rem;font-weight:600;z-index:1}
+.case-item-tag{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.5);color:#fff;font-size:.68rem;padding:4px 10px;border-radius:100px;font-weight:600;z-index:1;backdrop-filter:blur(4px)}
+@media(max-width:900px){.case-gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.case-gallery{grid-template-columns:1fr}}
+
+/* Factory image section */
+.factory{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:64px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.factory-img{min-height:360px;overflow:hidden}
+.factory-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.factory:hover .factory-img img{transform:scale(1.04)}
+.factory-text{padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+.factory-text h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:16px;line-height:1.2}
+.factory-text p{color:var(--text-dim);line-height:1.8;margin-bottom:20px}
+.factory-stats{display:flex;gap:32px}
+.factory-stat-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold)}
+.factory-stat-l{font-size:.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px}
+
+/* ========================================
+   INQUIRY
+   ======================================== */
+.inquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:48px;align-items:start}
+.inquiry-info h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:16px}
+.inquiry-info>p{color:var(--text-dim);margin-bottom:32px;line-height:1.7}
+.contact-item{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start}
+.contact-icon{width:48px;height:48px;min-width:48px;border-radius:10px;background:var(--gold-subtle);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem}
+.contact-item-label{font-size:.74rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.contact-item-value{font-weight:600;font-size:.95rem}
+
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.8rem;font-weight:600;margin-bottom:6px;color:var(--text-dim)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 16px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:.93rem;font-family:inherit;color:var(--text);transition:all .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-subtle);background:var(--bg2)}
+.form-group textarea{resize:vertical;min-height:130px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-btn{width:100%;padding:16px;background:var(--gold);color:#1a1a1c;font-size:.95rem;font-weight:700;border-radius:8px;transition:all .3s;text-transform:uppercase;letter-spacing:1.5px}
+.form-btn:hover{background:var(--gold-light);transform:translateY(-1px)}
+.form-msg{margin-top:12px;font-size:.84rem;padding:10px 16px;border-radius:6px;display:none}
+.form-msg.ok{display:block;background:rgba(46,125,50,.2);color:#81c784}
+.form-msg.err{display:block;background:rgba(198,40,40,.2);color:#ef5350}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer{padding:64px 48px 32px;background:var(--bg2);border-top:1px solid var(--border)}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:14px}
+.footer-about{font-size:.85rem;color:var(--text-dim);line-height:1.7;max-width:300px}
+.footer-col h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;color:var(--text)}
+.footer-col a{display:block;font-size:.85rem;color:var(--text-dim);margin-bottom:8px;transition:color .3s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:var(--text-light)}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media(max-width:900px){
+  .nav{padding:0 24px}
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .section{padding:80px 24px}
+  .inquiry-grid{grid-template-columns:1fr;gap:40px}
+  .factory{grid-template-columns:1fr}
+  .factory-img{min-height:240px}
+  .factory-text{padding:32px 24px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .cat-grid{grid-template-columns:1fr 1fr 1fr}
+  .product-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .hero-content{padding:100px 20px 60px}
+  .hero-dots{bottom:80px}
+  .hero-stats{gap:24px}
+  .hero-stat-n{font-size:1.4rem}
+  .process-step{grid-template-columns:auto 1fr;gap:16px}.process-step-img{display:none}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .case-gallery{grid-template-columns:1fr}
+  .factory-stats{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">RESEN</a>
+  <ul class="nav-links">
+    <li><a href="#products" data-section="products">Products</a></li>
+    <li><a href="#process" data-section="process">Process</a></li>
+    <li><a href="#strengths" data-section="strengths">About</a></li>
+    <li><a href="#inquiry" class="nav-cta" data-section="inquiry">Inquire</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<!-- Mobile -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#products" data-section="products">Products</a>
+  <a href="#process" data-section="process">Process</a>
+  <a href="#strengths" data-section="strengths">About</a>
+  <a href="#inquiry" data-section="inquiry" style="color:var(--gold)">Inquire →</a>
+</div>
+
+<!-- ========================================
+     HERO
+     ======================================== -->
+<section class="hero">
+  <div class="hero-slides" id="heroSlides"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Hebei Resen Furniture Co., Ltd.</p>
+    <h1 class="hero-title">Crafting Furniture<br><em>for the World</em></h1>
+    <p class="hero-desc">Professional manufacturer of dining chairs, office chairs, bar stools, and leisure furniture. Three automated production lines — Metal, Upholstery, Injection Moulding. OEM/ODM with factory-direct pricing.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-n">33,265m²</div><div class="hero-stat-l">Factory Area</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">$1.6M+</div><div class="hero-stat-l">Annual Revenue</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">100%</div><div class="hero-stat-l">On-Time Delivery</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">4.9/5</div><div class="hero-stat-l">Rating</div></div>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span>Dining Chairs</span><span>·</span><span>Office Chairs</span><span>·</span><span>Bar Stools</span><span>·</span><span>Sofa Chairs</span><span>·</span><span>Plastic Chairs</span><span>·</span><span>Storage Racks</span><span>·</span><span>OEM/ODM</span><span>·</span><span>Global Export</span><span>·</span>
+    <span>Dining Chairs</span><span>·</span><span>Office Chairs</span><span>·</span><span>Bar Stools</span><span>·</span><span>Sofa Chairs</span><span>·</span><span>Plastic Chairs</span><span>·</span><span>Storage Racks</span><span>·</span><span>OEM/ODM</span><span>·</span><span>Global Export</span><span>·</span>
+  </div>
+</div>
+
+<!-- ========================================
+     PRODUCTS
+     ======================================== -->
+<section class="section" id="products">
+  <div class="section-inner">
+    <span class="section-tag reveal">Our Products</span>
+    <h2 class="section-title reveal reveal-d1">Browse by<br>Category</h2>
+    <p class="section-desc reveal reveal-d2">Select a category to view all available models. Every piece is customizable — materials, colors, dimensions.</p>
+    <div class="cat-grid reveal reveal-d3" id="catGrid"></div>
+    <div class="subcat-bar" id="subcatBar"></div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ========================================
+     FACTORY
+     ======================================== -->
+<section class="section section-dark" id="factory">
+  <div class="section-inner">
+    <div class="factory reveal">
+      <div class="factory-img">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=500&fit=crop&auto=format" alt="Resen factory" loading="lazy">
+      </div>
+      <div class="factory-text">
+        <h3>Automated Production<br>at Scale</h3>
+        <p>Three dedicated production lines under one roof: Metal Furniture Manufacturing (tube bending, welding, powder coating), Fabric/PU Upholstery (foam shaping, stitching, wrapping), and Injection Moulding (plastic chair shells). Drawing-based OEM/ODM capabilities mean we build exactly what you design — with quality control at every stage.</p>
+        <div class="factory-stats">
+          <div><div class="factory-stat-n">6 Years</div><div class="factory-stat-l">on Alibaba</div></div>
+          <div><div class="factory-stat-n">≤ 2h</div><div class="factory-stat-l">Response Time</div></div>
+          <div><div class="factory-stat-n">60+</div><div class="factory-stat-l">Countries</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PROCESS
+     ======================================== -->
+<section class="section" id="process">
+  <div class="section-inner">
+    <span class="section-tag reveal">How We Work</span>
+    <h2 class="section-title reveal reveal-d1">From Concept<br>to Container</h2>
+    <p class="section-desc reveal reveal-d2">Every piece of Resen furniture moves through a rigorous five-stage process — combining skilled craftsmanship with modern manufacturing precision.</p>
+    <div class="process-timeline" id="processTimeline"></div>
+  </div>
+</section>
+
+<!-- ========================================
+     STRENGTHS
+     ======================================== -->
+<section class="section section-dark" id="strengths">
+  <div class="section-inner">
+    <span class="section-tag reveal">Why Resen</span>
+    <h2 class="section-title reveal reveal-d1">Built on Trust,<br>Delivered with Precision</h2>
+    <p class="section-desc reveal reveal-d2">Six years. 60+ markets. One standard: excellence.</p>
+    <div class="case-gallery" id="caseGallery"></div>
+  </div>
+</section>
+
+<!-- ========================================
+     INQUIRY
+     ======================================== -->
+<section class="section" id="inquiry">
+  <div class="section-inner">
+    <span class="section-tag reveal">Get in Touch</span>
+    <h2 class="section-title reveal reveal-d1">Start Your<br>Project</h2>
+    <p class="section-desc reveal reveal-d2">We respond within 2 hours with a tailored quote.</p>
+    <div class="inquiry-grid">
+      <div class="inquiry-info reveal reveal-d3">
+        <h3>Why Resen?</h3>
+        <p>From custom design to on-time shipment, we treat every order like it's our only one. OEM/ODM with drawing-based customization — our designers turn your concept into production-ready specifications.</p>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+          <div><div class="contact-item-label">Customization</div><div class="contact-item-value">Drawing-based, full OEM/ODM</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+          <div><div class="contact-item-label">Response</div><div class="contact-item-value">Within 2 hours</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-check-double"></i></div>
+          <div><div class="contact-item-label">Quality Control</div><div class="contact-item-value">Finished product inspection + warranty</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-globe"></i></div>
+          <div><div class="contact-item-label">Main Markets</div><div class="contact-item-value">Eastern Europe, South America, Western Europe</div></div>
+        </div>
+      </div>
+      <form id="inquiryForm" class="reveal reveal-d4">
+        <div class="form-row">
+          <div class="form-group"><label>Name *</label><input type="text" id="fName" placeholder="Your full name" required></div>
+          <div class="form-group"><label>Company</label><input type="text" id="fCompany" placeholder="Company name"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email *</label><input type="email" id="fEmail" placeholder="you@company.com" required></div>
+          <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" id="fPhone" placeholder="+1 234 567 8900"></div>
+        </div>
+        <div class="form-group"><label>Product Interest</label>
+          <select id="fCategory">
+            <option value="">Select a category</option>
+            <option>Dining Chairs</option><option>Office Chairs</option><option>Bar Chairs</option>
+            <option>Sofa Chairs</option><option>Plastic Chairs</option><option>Leisure Sofas</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Estimated Quantity</label><input type="text" id="fQty" placeholder="e.g. 500 pieces"></div>
+        <div class="form-group"><label>Message *</label><textarea id="fMsg" placeholder="Describe your needs — product type, material, color, quantity, target price..." required></textarea></div>
+        <button type="submit" class="form-btn">Send Inquiry</button>
+        <div class="form-msg" id="formMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">RESEN</div>
+        <p class="footer-about">Hebei Resen Furniture Co., Limited. Professional manufacturer of dining chairs, office chairs, bar stools, and leisure furniture. OEM/ODM with automated production lines.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#products">Dining Chairs</a><a href="#products">Office Chairs</a>
+        <a href="#products">Bar Stools</a><a href="#products">Sofa Chairs</a><a href="#products">Leisure Sofas</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#process">Process</a><a href="#strengths">Quality</a><a href="#inquiry">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@resenfurniture.com">info@resenfurniture.com</a>
+        <a href="#">David Wang</a>
+        <a href="#">Hebei, China</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hebei Resen Furniture Co., Limited. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============ DATA ============
+const productCategories=[
+  {id:'dining',name:'Dining Chairs',desc:'Velvet · Leather · Plastic · Metal',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp'},
+  {id:'office',name:'Office Chairs',desc:'Leather · Mesh · Ergonomic',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp'},
+  {id:'bar',name:'Bar Chairs',desc:'Swivel · Adjustable · Metal',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp'},
+  {id:'sofa',name:'Sofa Chairs',desc:'Velvet · Fabric · Leisure',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp'},
+  {id:'plastic',name:'Plastic Chairs',desc:'Injection Moulded · Stackable',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp'},
+  {id:'other',name:'Storage & More',desc:'Trolley Carts · Racks · Footstools',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp'},
+];
+
+const allProducts=[
+  {cat:'dining',sub:'velvet',name:'Velvet Dining Chair With Gold Metal Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:200,sold:1470,badge:'Bestseller'},
+  {cat:'dining',sub:'leather',name:'Leather Chair Glossy Dining Conference',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4b913b0c685_685.webp',moq:200,sold:1033},
+  {cat:'dining',sub:'leather',name:'PU Single Chair Coffee Shop Square Pattern',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp',moq:200,sold:890},
+  {cat:'office',sub:'leather',name:'Leather Office Chair Swivel Lift High Armrests',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp',moq:100,sold:1220},
+  {cat:'office',sub:'mesh',name:'Office Chair Conference Swivel Wheels Mesh',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bfa28f2bf685_685.webp',moq:100,sold:680},
+  {cat:'bar',sub:'fixed',name:'Fabric High Bar Chair Solid Color Wooden Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200,sold:1821,badge:'Top'},
+  {cat:'bar',sub:'fixed',name:'Velvet Bar Chair Hotel High Metal Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c1ffb047b685_685.webp',moq:200,sold:861},
+  {cat:'bar',sub:'swivel',name:'Upholstered Bar Chair Check Soft Fabric Swivel',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c18491820685_685.webp',moq:200,sold:540},
+  {cat:'sofa',sub:'velvet',name:'Velvet Sofa Chair Single Soft Cloth',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:100,sold:1146,badge:'New'},
+  {cat:'sofa',sub:'fabric',name:'Patchwork Fabric Chair High Back Wooden Legs',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b5e792793685_685.webp',moq:100,sold:350},
+  {cat:'sofa',sub:'fabric',name:'Living Room Sofa Chair Patchwork Fabric Armrests',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b68971555685_685.webp',moq:100,sold:280},
+  {cat:'plastic',sub:'all',name:'One Piece Plastic Dining Chair Hollow Back',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp',moq:500,sold:360,badge:'Hot'},
+  {cat:'other',sub:'trolley',name:'Metal Multi-Layer Sliding Storage Rack',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp',moq:300,sold:670},
+  {cat:'other',sub:'storage',name:'PP Frame Foldable Storage Cabinet',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6b47eb742d685_685.webp',moq:300,sold:210},
+  {cat:'other',sub:'trolley',name:'3 Layer Metal Kitchen Rolling Cart',img:'https://www.hbdiningfurniture.com/data/watermark/20250305/67c7f6ac8ef05685_685.webp',moq:300,sold:430},
+];
+
+const subCats={
+  dining:[{id:'all',label:'All'},{id:'velvet',label:'Velvet'},{id:'leather',label:'Leather'},{id:'plastic',label:'Plastic'},{id:'metal',label:'Metal'}],
+  office:[{id:'all',label:'All'},{id:'leather',label:'Leather'},{id:'mesh',label:'Mesh Fabric'}],
+  bar:[{id:'all',label:'All'},{id:'swivel',label:'Swivel'},{id:'fixed',label:'Fixed Height'}],
+  sofa:[{id:'all',label:'All'},{id:'velvet',label:'Velvet'},{id:'fabric',label:'Fabric'},{id:'patchwork',label:'Patchwork'}],
+  plastic:[{id:'all',label:'All Plastic'}],
+  other:[{id:'all',label:'All'},{id:'trolley',label:'Trolley Carts'},{id:'storage',label:'Storage'}],
+};
+
+const processSteps=[
+  {n:1,title:'Design & Prototyping',desc:'Our in-house designers gather your requirements — style, material, budget, application — and create detailed production plans. For OEM clients, we translate your drawings into manufacturable specs with 3D sampling.',img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=440&h=260&fit=crop&auto=format'},
+  {n:2,title:'Material Preparation',desc:'Steel tubing, PU leather, velvet fabric, injection-moulded plastic, solid wood — we source from audited suppliers. Metal goes through cutting and welding stations; fabric and PU are cut to pattern in our upholstery workshop.',img:'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=440&h=260&fit=crop&auto=format'},
+  {n:3,title:'Manufacturing',desc:'Three core production lines: Metal Furniture Manufacturing (tube bending, welding, powder coating), Fabric/PU Upholstery (foam shaping, fabric wrapping, stitching), and Injection Moulding (plastic chair shells, components).',img:'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=440&h=260&fit=crop&auto=format'},
+  {n:4,title:'Quality Control',desc:'Every batch undergoes rigorous testing — structural load tests, surface finish inspection, colour matching under standard lighting. Only pieces that meet our standards proceed to packaging.',img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=440&h=260&fit=crop&auto=format'},
+  {n:5,title:'Packaging & Global Delivery',desc:'Export-grade flat-pack or assembled packaging with foam padding, corner reinforcement, and moisture barrier. Container loading is optimized for maximum space utilization. Typical lead time: 2–4 weeks.',img:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=440&h=260&fit=crop&auto=format'},
+];
+
+const caseImages=[
+  {label:'Hotel Project — Eastern Europe',tag:'Contract',img:'https://images.unsplash.com/photo-1564078516393-cf04bdadeccc?w=600&h=450&fit=crop&auto=format'},
+  {label:'Restaurant Chain — South America',tag:'Bulk Order',img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=450&fit=crop&auto=format'},
+  {label:'Office Fit-out — Western Europe',tag:'OEM',img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop&auto=format'},
+  {label:'Cafe Chain — Middle East',tag:'Custom',img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=450&fit=crop&auto=format'},
+  {label:'Retail Display — Southeast Asia',tag:'ODM',img:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=450&fit=crop&auto=format'},
+  {label:'Container Loading — Export Ready',tag:'Logistics',img:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=450&fit=crop&auto=format'},
+];
+
+// ============ CURSOR ============
+const cursor=document.getElementById('cursor'),cursorDot=document.getElementById('cursorDot');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+function animCursor(){cx+=(mx-cx)*.15;cy+=(my-cy)*.15;cursor.style.left=cx+'px';cursor.style.top=cy+'px';cursorDot.style.left=mx+'px';cursorDot.style.top=my+'px';requestAnimationFrame(animCursor)}
+animCursor();
+
+// ============ HERO CAROUSEL ============
+const heroSlides=[
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&h=900&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1617806118233-18e1de3b5db2?w=1600&h=900&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&h=900&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1600&h=900&fit=crop&auto=format',
+];
+const heroSlidesEl=document.getElementById('heroSlides');
+const heroDotsEl=document.getElementById('heroDots');
+let currentSlide=0,heroInterval;
+
+heroSlidesEl.innerHTML=heroSlides.map((url,i)=>`<div class="hero-slide${i===0?' active':''}" style="background-image:url(${url})"></div>`).join('');
+heroDotsEl.innerHTML=heroSlides.map((_,i)=>`<div class="hero-dot${i===0?' active':''}" data-index="${i}"></div>`).join('');
+
+function goSlide(i){
+  heroSlidesEl.querySelectorAll('.hero-slide').forEach((s,n)=>s.classList.toggle('active',n===i));
+  heroDotsEl.querySelectorAll('.hero-dot').forEach((d,n)=>d.classList.toggle('active',n===i));
+  currentSlide=i;
+}
+function nextSlide(){goSlide((currentSlide+1)%heroSlides.length)}
+
+heroInterval=setInterval(nextSlide,5000);
+
+heroDotsEl.addEventListener('click',e=>{
+  const dot=e.target.closest('.hero-dot');
+  if(!dot)return;
+  clearInterval(heroInterval);
+  goSlide(parseInt(dot.dataset.index));
+  heroInterval=setInterval(nextSlide,5000);
+});
+
+document.querySelectorAll('a,button,.cat-card,.product-card,input,textarea,select,.factory,.hero-dot').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+});
+
+// ============ NAV ============
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+document.getElementById('navToggle').addEventListener('click',()=>{
+  const m=document.getElementById('mobileMenu'),i=document.getElementById('navToggle').querySelector('i');
+  m.classList.toggle('active');i.className=m.classList.contains('active')?'fa-solid fa-xmark':'fa-solid fa-bars';
+});
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('mobileMenu').classList.remove('active');
+  document.getElementById('navToggle').querySelector('i').className='fa-solid fa-bars';
+}));
+
+// ============ REVEAL ============
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+// ============ HASH ROUTING + ACTIVE MENU ============
+const allSections=document.querySelectorAll('section[id],.hero');
+const navLinks=document.querySelectorAll('.nav-links a[data-section]');
+const mobileLinks=document.querySelectorAll('.mobile-menu a[data-section]');
+
+// Give hero an id for tracking
+if(!document.querySelector('.hero').id)document.querySelector('.hero').id='hero';
+
+const hashObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const id=e.target.id;
+    // Update hash without adding to history
+    if(id==='hero')history.replaceState(null,null,' ');
+    else history.replaceState(null,null,'#'+id);
+    // Highlight menu
+    [...navLinks,...mobileLinks].forEach(a=>{
+      a.classList.toggle('active',a.dataset.section===id);
+    });
+  });
+},{threshold:.3,rootMargin:'-10% 0px -60% 0px'});
+
+document.querySelectorAll('section[id]').forEach(s=>hashObserver.observe(s));
+// Also observe hero separately
+hashObserver.observe(document.querySelector('.hero'));
+
+// On load: if URL has hash, scroll to it
+window.addEventListener('load',()=>{
+  const hash=window.location.hash;
+  if(hash){const el=document.querySelector(hash);if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),200);}
+});
+
+// ============ PRODUCTS (Category + Subcategory + Grid) ============
+const catGrid=document.getElementById('catGrid');
+const subcatBar=document.getElementById('subcatBar');
+const productGrid=document.getElementById('productGrid');
+let activeCat='dining',activeSub='all';
+
+// Render category cards
+function renderCats(){
+  catGrid.innerHTML=productCategories.map(c=>{
+    const count=allProducts.filter(p=>p.cat===c.id).length;
+    return `<div class="cat-card${c.id===activeCat?' active':''}" data-cat="${c.id}">
+      <div class="cat-card-img"><img src="${c.img}" alt="${c.name}" loading="lazy"></div>
+      <div class="cat-card-body"><h4>${c.name}</h4><p>${c.desc}</p></div>
+      <span class="cat-card-count">${count} models</span>
+    </div>`;
+  }).join('');
+}
+
+// Render subcategory pills
+function renderSubcats(){
+  const subs=subCats[activeCat];
+  if(!subs||subs.length<=1){subcatBar.innerHTML='';return;}
+  subcatBar.innerHTML=subs.map(s=>`<button class="subcat-pill${s.id===activeSub?' active':''}" data-sub="${s.id}">${s.label}</button>`).join('');
+}
+
+// Render product grid
+function renderProducts(){
+  let items=allProducts.filter(p=>p.cat===activeCat);
+  if(activeSub!=='all')items=items.filter(p=>p.sub===activeSub);
+  if(items.length===0){
+    productGrid.innerHTML='<div class="product-empty">No products match this filter. <a href="#inquiry" style="color:var(--gold)">Send a custom inquiry →</a></div>';
+    return;
+  }
+  productGrid.innerHTML=items.map(p=>`
+    <div class="product-card">
+      <div class="product-card-img"><img src="${p.img}" alt="${p.name}" loading="lazy">${p.badge?`<span class="product-card-badge">${p.badge}</span>`:''}</div>
+      <div class="product-card-body">
+        <h4>${p.name}</h4>
+        <div class="product-card-meta">
+          <span><i class="fa-solid fa-box"></i> MOQ ${p.moq}</span>
+          ${p.sold?`<span><i class="fa-solid fa-fire"></i> ${p.sold} sold</span>`:''}
+        </div>
+      </div>
+      <button class="product-inquire" data-product="${p.name.replace(/'/g,"\\'")}">Inquire This Model</button>
+    </div>
+  `).join('');
+}
+
+// Category click
+catGrid.addEventListener('click',e=>{
+  const card=e.target.closest('.cat-card');
+  if(!card)return;
+  activeCat=card.dataset.cat;
+  activeSub='all';
+  renderCats();
+  renderSubcats();
+  renderProducts();
+});
+
+// Subcategory click
+subcatBar.addEventListener('click',e=>{
+  const pill=e.target.closest('.subcat-pill');
+  if(!pill)return;
+  activeSub=pill.dataset.sub;
+  renderSubcats();
+  renderProducts();
+});
+
+// Inquire button click — pre-fill form
+productGrid.addEventListener('click',e=>{
+  const btn=e.target.closest('.product-inquire');
+  if(!btn)return;
+  document.getElementById('fMsg').value=`I'm interested in: ${btn.dataset.product}. Please send quotation with MOQ and FOB price.`;
+  document.getElementById('inquiry').scrollIntoView({behavior:'smooth'});
+});
+
+// Init
+renderCats();
+renderSubcats();
+renderProducts();
+
+// ============ PROCESS ============
+document.getElementById('processTimeline').innerHTML=processSteps.map(s=>`
+  <div class="process-step reveal">
+    <div class="process-step-num">${s.n}</div>
+    <div class="process-step-info"><h4>${s.title}</h4><p>${s.desc}</p></div>
+    <div class="process-step-img"><img src="${s.img}" alt="${s.title}" loading="lazy"></div>
+  </div>
+`).join('');
+document.querySelectorAll('#processTimeline .reveal').forEach(el=>revealObserver.observe(el));
+
+// ============ CASE GALLERY ============
+document.getElementById('caseGallery').innerHTML=caseImages.map(c=>`
+  <div class="case-item reveal">
+    <img src="${c.img}" alt="${c.label}" loading="lazy">
+    <span class="case-item-tag">${c.tag}</span>
+    <span class="case-item-label">${c.label}</span>
+  </div>
+`).join('');
+document.querySelectorAll('#caseGallery .reveal').forEach(el=>revealObserver.observe(el));
+
+// ============ FORM ============
+document.getElementById('inquiryForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const msg=document.getElementById('formMsg');
+  const n=document.getElementById('fName').value.trim();
+  const em=document.getElementById('fEmail').value.trim();
+  const me=document.getElementById('fMsg').value.trim();
+  if(!n||!em||!me){msg.className='form-msg err';msg.textContent='Please fill all required fields.';return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg.className='form-msg err';msg.textContent='Valid email required.';return}
+  msg.className='form-msg ok';msg.textContent='✓ Inquiry sent! David Wang will respond within 2 hours.';
+  this.reset();setTimeout(()=>{msg.className='form-msg';msg.textContent=''},5000);
+});
+
+// Smooth scroll (skip nav-cta behavior change)
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  const target=document.querySelector(a.getAttribute('href'));
+  if(target)target.scrollIntoView({behavior:'smooth'});
+}));
+</script>
+</body>
+</html>
