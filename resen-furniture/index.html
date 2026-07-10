@@ -66,15 +66,14 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
    ======================================== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1c}
 .hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide.active{opacity:1}
 .hero-slide.text-only{background:var(--bg);background-image:
   radial-gradient(ellipse at 30% 20%,rgba(201,160,80,.06) 0%,transparent 60%),
   radial-gradient(ellipse at 70% 80%,rgba(201,160,80,.04) 0%,transparent 50%),
   linear-gradient(135deg,rgba(201,160,80,.03) 1px,transparent 1px),
   linear-gradient(45deg,rgba(201,160,80,.02) 1px,transparent 1px);
   background-size:100% 100%,100% 100%,40px 40px,40px 40px}
-.hero-slide.active{opacity:1}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,28,.65) 0%,rgba(26,26,28,.75) 50%,rgba(26,26,28,.9) 100%);z-index:1;pointer-events:none;transition:opacity .8s}
-.hero-overlay.hidden{opacity:0}
 .hero-pattern{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a050' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;z-index:2}
 .hero-nav-shield{position:absolute;inset:0 0 auto 0;height:100px;background:linear-gradient(180deg,rgba(26,26,28,.88) 0%,rgba(26,26,28,.4) 60%,transparent 100%);z-index:1;pointer-events:none;transition:opacity .8s;opacity:0}
 .hero-nav-shield.visible{opacity:1}
@@ -82,7 +81,6 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 .hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .4s}
 .hero-dot.active{background:var(--gold);width:24px;border-radius:4px}
 .hero-content{position:relative;z-index:1;text-align:center;max-width:900px;padding:120px 32px 80px;transition:opacity .8s}
-.hero-content.hidden{opacity:0;pointer-events:none}
 .hero-eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:5px;color:var(--gold);margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .3s var(--ease-out) forwards}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;color:#fff;opacity:0;transform:translateY(30px);animation:fadeUp .8s .5s var(--ease-out) forwards}
 .hero-title em{font-style:italic;color:var(--gold-light);display:block}
@@ -578,7 +576,7 @@ animCursor();
 
 // ============ HERO CAROUSEL ============
 const heroSlides=[
-  '',  // slide 1: text-only dark poster
+  '',
   'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-2.jpg',
   'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-3.jpg',
   'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-4.jpg',
@@ -589,18 +587,23 @@ let currentSlide=0,heroInterval;
 
 const heroOverlay=document.querySelector('.hero-overlay');
 
-heroSlidesEl.innerHTML=heroSlides.map((url,i)=>`<div class="hero-slide${i===0?' text-only active':' '}"${url?` style="background-image:url(${url})"`:''}></div>`).join('');
-heroDotsEl.innerHTML=heroSlides.map((_,i)=>`<div class="hero-dot${i===0?' active':''}" data-index="${i}"></div>`).join('');
+heroSlidesEl.innerHTML=heroSlides.map((url,i)=>{
+  let cls='hero-slide';
+  if(i===0) cls+=' text-only';
+  if(i===0) cls+=' active';
+  let sty=url?' style="background-image:url('+url+')"':'';
+  return '<div class="'+cls+'"'+sty+'></div>';
+}).join('');
+heroDotsEl.innerHTML=heroSlides.map((_,i)=>'<div class="hero-dot'+(i===0?' active':'')+'" data-index="'+i+'"></div>').join('');
 
 function goSlide(i){
   currentSlide=i;
   heroSlidesEl.querySelectorAll('.hero-slide').forEach((s,n)=>s.classList.toggle('active',n===i));
   heroDotsEl.querySelectorAll('.hero-dot').forEach((d,n)=>d.classList.toggle('active',n===i));
-  // show overlay + text only on slide 0, hide on designed posters
-  const heroNavShield=document.getElementById('heroNavShield');
+  var shield=document.getElementById('heroNavShield');
   heroOverlay.classList.toggle('hidden',i!==0);
   document.getElementById('heroContent').classList.toggle('hidden',i!==0);
-  heroNavShield.classList.toggle('visible',i!==0);
+  if(shield) shield.classList.toggle('visible',i!==0);
 }
 function nextSlide(){goSlide((currentSlide+1)%heroSlides.length)}
 
