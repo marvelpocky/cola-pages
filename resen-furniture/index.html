@@ -7,6 +7,8 @@
 <meta name="description" content="Resen Furniture — Stunning Your Space. Professional manufacturer of dining chairs, office chairs, bar stools. OEM/ODM factory direct.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://marvelpocky.github.io">
+<link rel="preconnect" href="https://www.hbdiningfurniture.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -65,14 +67,22 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
    HERO
    ======================================== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1c}
-.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s;z-index:0}
 .hero-slide.active{opacity:1}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,28,.35) 0%,rgba(26,26,28,.5) 50%,rgba(26,26,28,.75) 100%);z-index:1;pointer-events:none}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,28,.35) 0%,rgba(26,26,28,.5) 50%,rgba(26,26,28,.75) 100%);z-index:1;pointer-events:none;transition:opacity .8s}
+.hero-overlay.hidden{opacity:0}
+.hero-pattern{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a050' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;z-index:2}
 .hero-pattern{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a050' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;z-index:2}
 .hero-dots{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
 .hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .4s}
 .hero-dot.active{background:var(--gold);width:24px;border-radius:4px}
-.hero-content{position:relative;z-index:1;text-align:center;max-width:900px;padding:120px 32px 80px}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:900px;padding:120px 32px 80px;transition:opacity .8s}
+.hero-content.hidden{opacity:0;pointer-events:none}
+.hero-chairs{position:absolute;inset:0;z-index:1;pointer-events:none;transition:opacity .8s}
+.hero-chairs.hidden{opacity:0}
+.hero-chair{position:absolute;top:50%;transform:translateY(-50%);width:clamp(140px,20vw,260px);height:auto;opacity:.45}
+.hero-chair-left{left:3%}
+.hero-chair-right{right:3%}
 .hero-eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:5px;color:var(--gold);margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .3s var(--ease-out) forwards}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;color:#fff;opacity:0;transform:translateY(30px);animation:fadeUp .8s .5s var(--ease-out) forwards}
 .hero-title em{font-style:italic;color:var(--gold-light);display:block}
@@ -98,7 +108,14 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 /* ========================================
    SECTION
    ======================================== */
-.section{padding:120px 48px;position:relative}
+.section{padding:120px 48px;position:relative;background-size:cover;background-position:center;background-attachment:fixed}
+.section::before{content:'';position:absolute;inset:0;background:rgba(26,26,28,.85);z-index:0}
+.section>*{position:relative;z-index:1}
+#products{background-image:url(https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1600&q=80)}
+#process{background-image:url(https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1600&q=80)}
+#strengths{background-image:url(https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80)}
+#inquiry{background-image:url(https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80)}
+#factory.section{background-image:url(https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&q=80)}
 .section-dark{background:var(--bg3)}
 .section-inner{max-width:1280px;margin:0 auto}
 .section-tag{font-size:.72rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:16px;display:block;font-weight:600}
@@ -106,17 +123,16 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 .section-desc{color:var(--text-dim);font-size:1.05rem;max-width:460px}
 
 /* Reveal */
-.reveal{opacity:0;transform:translateY(40px) var(--ease-out),transform .8s var(--ease-out)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
 
 /* ========================================
-   PRODUCT CAROUSEL
+   CATEGORY CARDS
    ======================================== */
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:48px}
 .cat-card{position:relative;background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .4s;box-shadow:var(--shadow-sm)}
 .cat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--gold-dim)}
-.cat-card.active{border-color:var(--gold);background:var(--gold-subtle)}
 .cat-card-img{height:180px;overflow:hidden;position:relative}
 .cat-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .cat-card:hover .cat-card-img img{transform:scale(1.06)}
@@ -125,28 +141,21 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 .cat-card h4{font-size:1rem;font-weight:700;margin-bottom:2px}
 .cat-card p{font-size:.74rem;opacity:.8}
 .cat-card-count{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.5);color:#fff;font-size:.68rem;padding:3px 10px;border-radius:100px;font-weight:600;backdrop-filter:blur(4px)}
+@media(max-width:600px){.cat-grid{grid-template-columns:1fr 1fr}}
 
-/* Product grid */
-.subcat-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
-.subcat-pill{padding:7px 16px;border-radius:100px;font-size:.8rem;font-weight:500;background:var(--bg);color:var(--text-dim);border:1px solid var(--border);cursor:pointer;transition:all .25s}
-.subcat-pill:hover{border-color:var(--gold-dim);color:var(--gold)}
-.subcat-pill.active{background:var(--gold);color:#1a1a1c;border-color:var(--gold)}
-
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:28px}
-.product-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:transform .35s,box-shadow .35s;box-shadow:var(--shadow-sm);position:relative}
-.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
-.product-card-img{height:220px;overflow:hidden;position:relative}
-.product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.product-card:hover .product-card-img img{transform:scale(1.04)}
-.product-card-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:#1a1a1c;font-size:.66rem;padding:4px 10px;border-radius:100px;font-weight:700;text-transform:uppercase;letter-spacing:1px;z-index:1}
-.product-card-body{padding:14px 16px 0}
-.product-card h4{font-size:.92rem;font-weight:600;margin-bottom:6px;line-height:1.3;color:var(--text)}
-.product-card-meta{display:flex;gap:16px;font-size:.76rem;color:var(--text-light);margin-bottom:12px}
-.product-card-meta i{margin-right:3px;color:var(--gold-dim)}
-.product-inquire{width:100%;padding:10px;background:var(--gold-subtle);color:var(--gold);font-size:.8rem;font-weight:600;border-radius:0 0 10px 10px;transition:all .3s;border-top:1px solid var(--border);cursor:pointer}
-.product-inquire:hover{background:var(--gold);color:#1a1a1c}
-.product-empty{grid-column:1/-1;text-align:center;padding:32px;color:var(--text-light)}
-@media(max-width:600px){.cat-grid{grid-template-columns:1fr 1fr}.product-grid{grid-template-columns:1fr}}
+/* ========================================
+   FACTORY
+   ======================================== */
+.factory{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:64px;background:rgba(26,26,28,.85);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);backdrop-filter:blur(10px)}
+.factory-img{min-height:360px;overflow:hidden}
+.factory-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.factory:hover .factory-img img{transform:scale(1.04)}
+.factory-text{padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+.factory-text h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:16px;line-height:1.2}
+.factory-text p{color:var(--text-dim);line-height:1.8;margin-bottom:20px}
+.factory-stats{display:flex;gap:32px}
+.factory-stat-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold)}
+.factory-stat-l{font-size:.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px}
 
 /* ========================================
    PROCESS
@@ -164,7 +173,7 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 @media(max-width:768px){.process-timeline{padding-left:32px}.process-step{grid-template-columns:auto 1fr;gap:16px}.process-step-img{display:none}}
 
 /* ========================================
-   STRENGTHS
+   STRENGTHS / CASE GALLERY
    ======================================== */
 .case-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
 .case-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
@@ -175,18 +184,6 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 .case-item-tag{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.5);color:#fff;font-size:.68rem;padding:4px 10px;border-radius:100px;font-weight:600;z-index:1;backdrop-filter:blur(4px)}
 @media(max-width:900px){.case-gallery{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.case-gallery{grid-template-columns:1fr}}
-
-/* Factory image section */
-.factory{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:64px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
-.factory-img{min-height:360px;overflow:hidden}
-.factory-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.factory:hover .factory-img img{transform:scale(1.04)}
-.factory-text{padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
-.factory-text h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:16px;line-height:1.2}
-.factory-text p{color:var(--text-dim);line-height:1.8;margin-bottom:20px}
-.factory-stats{display:flex;gap:32px}
-.factory-stat-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold)}
-.factory-stat-l{font-size:.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px}
 
 /* ========================================
    INQUIRY
@@ -238,7 +235,6 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
   .factory-text{padding:32px 24px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .cat-grid{grid-template-columns:1fr 1fr 1fr}
-  .product-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
   .hero-content{padding:100px 20px 60px}
@@ -261,22 +257,26 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 
 <!-- Nav -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/logo.png" alt="Resen Furniture" style="height:28px;vertical-align:middle"></a>
+  <a href="index.html" class="nav-logo"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/logo-white.png" alt="Resen Furniture" style="height:42px;vertical-align:middle"></a>
   <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
     <li><a href="#products" data-section="products">Products</a></li>
     <li><a href="#process" data-section="process">Process</a></li>
     <li><a href="#strengths" data-section="strengths">About</a></li>
-    <li><a href="#inquiry" class="nav-cta" data-section="inquiry">Inquire</a></li>
+    <li><a href="blog/index.html">Blog</a></li>
+    <li><a href="#inquiry" class="nav-cta" data-section="inquiry">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle"><i class="fa-solid fa-bars"></i></button>
 </nav>
 
 <!-- Mobile -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
   <a href="#products" data-section="products">Products</a>
   <a href="#process" data-section="process">Process</a>
   <a href="#strengths" data-section="strengths">About</a>
-  <a href="#inquiry" data-section="inquiry" style="color:var(--gold)">Inquire →</a>
+  <a href="blog/index.html">Blog</a>
+  <a href="#inquiry" data-section="inquiry" style="color:var(--gold)">Contact →</a>
 </div>
 
 <!-- ========================================
@@ -286,6 +286,10 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
   <div class="hero-slides" id="heroSlides"></div>
   <div class="hero-overlay"></div>
   <div class="hero-pattern"></div>
+  <div class="hero-chairs" id="heroChairs">
+    <img class="hero-chair hero-chair-left" src="https://marvelpocky.github.io/cola-pages/resen-furniture/chair-office.png" alt="">
+    <img class="hero-chair hero-chair-right" src="https://marvelpocky.github.io/cola-pages/resen-furniture/chair-dining.png" alt="">
+  </div>
   <div class="hero-content" id="heroContent">
     <p class="hero-eyebrow">Stunning Your Space</p>
     <h1 class="hero-title">Crafting Furniture<br><em>for the World</em></h1>
@@ -310,7 +314,7 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 </div>
 
 <!-- ========================================
-     PRODUCTS
+     PRODUCTS (Category Cards Only)
      ======================================== -->
 <section class="section" id="products">
   <div class="section-inner">
@@ -318,19 +322,17 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
     <h2 class="section-title reveal reveal-d1">Browse by<br>Category</h2>
     <p class="section-desc reveal reveal-d2">Select a category to view all available models. Every piece is customizable — materials, colors, dimensions.</p>
     <div class="cat-grid reveal reveal-d3" id="catGrid"></div>
-    <div class="subcat-bar" id="subcatBar"></div>
-    <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
 
 <!-- ========================================
      FACTORY
      ======================================== -->
-<section class="section section-dark" id="factory">
+<section class="section" id="factory">
   <div class="section-inner">
     <div class="factory reveal">
       <div class="factory-img">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=500&fit=crop&auto=format" alt="Resen factory" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=500&fit=crop&auto=format" alt="Resen factory production line" loading="lazy">
       </div>
       <div class="factory-text">
         <h3>Automated Production<br>at Scale</h3>
@@ -360,7 +362,7 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 <!-- ========================================
      STRENGTHS
      ======================================== -->
-<section class="section section-dark" id="strengths">
+<section class="section" id="strengths">
   <div class="section-inner">
     <span class="section-tag reveal">Why Resen</span>
     <h2 class="section-title reveal reveal-d1">Built on Trust,<br>Delivered with Precision</h2>
@@ -441,6 +443,7 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
       <div class="footer-col">
         <h4>Company</h4>
         <a href="#process">Process</a><a href="#strengths">Quality</a><a href="#inquiry">Contact</a>
+        <a href="blog/index.html">Blog</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
@@ -460,30 +463,16 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 const productCategories=[
   {id:'fabric-pu',name:'Fabric / PU Dining Chairs',desc:'HC-R · HC-U · HC-F Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp'},
   {id:'plastic',name:'Plastic Dining Chairs',desc:'HC-P · HC-N Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4f38d1ce685_685.webp'},
-  {id:'swivel',name:'Swivel Chairs',desc:'HC-U F/S Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4ab4e179685_685.webp'},
-  {id:'office',name:'Office / Gaming',desc:'HC-B · HC-G Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp'},
-  {id:'metal',name:'Metal Chairs',desc:'HC-M · HC-W Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp'},
+  {id:'swivel',name:'Swivel Chairs',desc:'HC-U F/S Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp'},
+  {id:'office',name:'Office / Gaming Chairs',desc:'HC-B · HC-G Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp'},
+  {id:'metal',name:'Metal Chairs',desc:'HC-M · HC-W Series',img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=380&fit=crop&auto=format'},
   {id:'bar',name:'Bar Stools',desc:'HB Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp'},
   {id:'leisure',name:'Leisure Chairs',desc:'HS Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp'},
-  {id:'rattan',name:'PE Rattan Furniture',desc:'HR Series',img:'https://images.unsplash.com/photo-1616628188500-9a1b5b3c1b0e?w=500&h=400&fit=crop&auto=format'},
-  {id:'tables',name:'Tables',desc:'HT Series',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp'},
+  {id:'rattan',name:'PE Rattan Furniture',desc:'HR Series',img:'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&h=380&fit=crop&auto=format'},
+  {id:'tables',name:'Tables',desc:'HT Series',img:'https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=500&h=400&fit=crop&auto=format'},
   {id:'footstools',name:'Footstools',desc:'HF Series',img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&h=400&fit=crop&auto=format'},
   {id:'trolley',name:'Trolley Carts',desc:'HZ Series',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp'},
 ];
-
-const subCats={
-  'fabric-pu':[{id:'all',label:'All'},{id:'hc-r',label:'HC-R (Velvet/Fabric)'},{id:'hc-u',label:'HC-U (PU Leather)'},{id:'hc-f',label:'HC-F (Fabric Accent)'}],
-  plastic:[{id:'all',label:'All'},{id:'hc-p',label:'HC-P Series'},{id:'hc-n',label:'HC-N Series'}],
-  swivel:[{id:'all',label:'All'}],
-  office:[{id:'all',label:'All'},{id:'hc-b',label:'HC-B (Office)'},{id:'hc-g',label:'HC-G (Gaming)'}],
-  metal:[{id:'all',label:'All'},{id:'hc-m',label:'HC-M Series'},{id:'hc-w',label:'HC-W Series'}],
-  bar:[{id:'all',label:'All'},{id:'hb-f',label:'HB-F (Fabric)'},{id:'hb-p',label:'HB-P (Plastic)'},{id:'hb-r',label:'HB-R (Velvet)'},{id:'hb-u',label:'HB-U (PU/Swivel)'},{id:'hb-w',label:'HB-W (Wooden)'}],
-  leisure:[{id:'all',label:'All'}],
-  rattan:[{id:'all',label:'All'}],
-  tables:[{id:'all',label:'All'},{id:'ht-m',label:'HT-M Series'},{id:'ht-g',label:'HT-G Series'},{id:'ht-t',label:'HT-T Series'},{id:'ht-s',label:'HT-S Series'}],
-  footstools:[{id:'all',label:'All'}],
-  trolley:[{id:'all',label:'All'}],
-};
 
 const allProducts=[
   {cat:'fabric-pu',sub:'hc-r',name:'HC-R01 / R01A / R01D / R02',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b4dd47b5b685_685.webp',moq:200},
@@ -518,8 +507,8 @@ const allProducts=[
   {cat:'office',sub:'hc-b',name:'HC-B01-B05 / B08-B10 / B12 / B17-B18',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp',moq:100},
   {cat:'office',sub:'hc-b',name:'HC-B20-B24 / B24A / B30 / B31',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bf11ef4c0685_685.webp',moq:100},
   {cat:'office',sub:'hc-g',name:'HC-G01 / G02',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544bfa28f2bf685_685.webp',moq:100},
-  {cat:'metal',sub:'hc-m',name:'HC-M01 / M02 / M04 / M15 / M19 / M22-M23',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp',moq:200},
-  {cat:'metal',sub:'hc-w',name:'HC-W01-W12 / W14-W16',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b913b0c685_685.webp',moq:200},
+  {cat:'metal',sub:'hc-m',name:'HC-M01 / M02 / M04 / M15 / M19 / M22-M23',img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=380&fit=crop&auto=format',moq:200},
+  {cat:'metal',sub:'hc-w',name:'HC-W01-W12 / W14-W16',img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=380&fit=crop&auto=format',moq:200},
   {cat:'bar',sub:'hb-f',name:'HB-F01 / F05 / F08 / H09',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c18491820685_685.webp',moq:200},
   {cat:'bar',sub:'hb-p',name:'HB-P01-P03-P08 / P09S-P12S / P80-P82',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200},
   {cat:'bar',sub:'hb-r',name:'HB-R01-02 / R08 / R11 / R21 / R30',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c1ffb047b685_685.webp',moq:200},
@@ -527,7 +516,7 @@ const allProducts=[
   {cat:'bar',sub:'hb-w',name:'HB-W01 / W02 / W06',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544c09a814cd685_685.webp',moq:200},
   {cat:'leisure',sub:'all',name:'HS-03 / HS-03T / HS-05-07 / HS-09',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:100},
   {cat:'leisure',sub:'all',name:'HS-11-12 / HS-14 / HS-18-21 / HS-26',img:'https://www.hbdiningfurniture.com/data/watermark/20231103/6544b498571ac685_685.webp',moq:100},
-  {cat:'rattan',sub:'all',name:'HR-01 / HR-03 / HR-02T',img:'https://images.unsplash.com/photo-1616628188500-9a1b5b3c1b0e?w=500&h=400&fit=crop&auto=format',moq:100},
+  {cat:'rattan',sub:'all',name:'HR-01 / HR-03 / HR-02T',img:'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&h=380&fit=crop&auto=format',moq:100},
   {cat:'tables',sub:'ht-m',name:'HT-M01-M08 / M15-M18 / M20-M22',img:'https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=500&h=400&fit=crop&auto=format',moq:50},
   {cat:'tables',sub:'ht-m',name:'HT-M25 / M31 / M33 / M42 / M51-M54 / M64 / M69',img:'https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=500&h=400&fit=crop&auto=format',moq:50},
   {cat:'tables',sub:'ht-g',name:'HT-G01-G04 / G07 / G12 / G15 / G18 / G23',img:'https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=500&h=400&fit=crop&auto=format',moq:50},
@@ -539,11 +528,9 @@ const allProducts=[
   {cat:'trolley',sub:'all',name:'HZ-05 / HZ-06 / HZ-07',img:'https://www.hbdiningfurniture.com/data/watermark/20250304/67c6a6ea7e816685_685.webp',moq:300},
 ];
 
-
-
 const processSteps=[
   {n:1,title:'Design & Prototyping',desc:'Our in-house designers gather your requirements — style, material, budget, application — and create detailed production plans. For OEM clients, we translate your drawings into manufacturable specs with 3D sampling.',img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=440&h=260&fit=crop&auto=format'},
-  {n:2,title:'Material Preparation',desc:'Steel tubing, PU leather, velvet fabric, injection-moulded plastic, solid wood — we source from audited suppliers. Metal goes through cutting and welding stations; fabric and PU are cut to pattern in our upholstery workshop.',img:'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=440&h=260&fit=crop&auto=format'},
+  {n:2,title:'Material Preparation',desc:'Steel tubing, PU leather, velvet fabric, injection-moulded plastic, solid wood — we source from audited suppliers. Metal goes through cutting and welding stations; fabric and PU are cut to pattern in our upholstery workshop.',img:'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=440&h=260&fit=crop&auto=format'},
   {n:3,title:'Manufacturing',desc:'Three core production lines: Metal Furniture Manufacturing (tube bending, welding, powder coating), Fabric/PU Upholstery (foam shaping, fabric wrapping, stitching), and Injection Moulding (plastic chair shells, components).',img:'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=440&h=260&fit=crop&auto=format'},
   {n:4,title:'Quality Control',desc:'Every batch undergoes rigorous testing — structural load tests, surface finish inspection, colour matching under standard lighting. Only pieces that meet our standards proceed to packaging.',img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=440&h=260&fit=crop&auto=format'},
   {n:5,title:'Packaging & Global Delivery',desc:'Export-grade flat-pack or assembled packaging with foam padding, corner reinforcement, and moisture barrier. Container loading is optimized for maximum space utilization. Typical lead time: 2–4 weeks.',img:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=440&h=260&fit=crop&auto=format'},
@@ -567,18 +554,33 @@ animCursor();
 
 // ============ HERO CAROUSEL ============
 const heroSlides=[
-  'https://marvelpocky.github.io/cola-pages/resen-furniture/h1.jpg',
-  'https://marvelpocky.github.io/cola-pages/resen-furniture/h2.jpg',
-  'https://marvelpocky.github.io/cola-pages/resen-furniture/h3.jpg',
-  'https://marvelpocky.github.io/cola-pages/resen-furniture/h4.jpg',
+  'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-showroom.jpg',
+  'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-1.jpg',
+  'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-2.jpg',
+  'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-3.jpg',
+  'https://marvelpocky.github.io/cola-pages/resen-furniture/hero-4.jpg',
 ];
 const heroSlidesEl=document.getElementById('heroSlides');
 const heroDotsEl=document.getElementById('heroDots');
+const heroOverlay=document.querySelector('.hero-overlay');
+const heroContent=document.getElementById('heroContent');
+const heroChairs=document.getElementById('heroChairs');
+const TOTAL=5;
 let currentSlide=0,heroInterval;
-heroSlidesEl.innerHTML=heroSlides.map((url,i)=>'<div class="hero-slide'+(i===0?' active':'')+'"><img src="'+url+'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"></div>').join('');
+
+heroSlidesEl.innerHTML=heroSlides.map((url,i)=>'<div class="hero-slide'+(i===0?' active':'')+'"><img src="'+url+'" alt="Resen Furniture" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"></div>').join('');
 heroDotsEl.innerHTML=heroSlides.map((_,i)=>'<div class="hero-dot'+(i===0?' active':'')+'" data-index="'+i+'"></div>').join('');
-function goSlide(i){currentSlide=i;heroSlidesEl.querySelectorAll('.hero-slide').forEach((s,n)=>s.classList.toggle('active',n===i));heroDotsEl.querySelectorAll('.hero-dot').forEach((d,n)=>d.classList.toggle('active',n===i))}
-function nextSlide(){goSlide((currentSlide+1)%4)}
+
+function goSlide(i){
+  currentSlide=i;
+  heroSlidesEl.querySelectorAll('.hero-slide').forEach((s,n)=>s.classList.toggle('active',n===i));
+  heroDotsEl.querySelectorAll('.hero-dot').forEach((d,n)=>d.classList.toggle('active',n===i));
+  var first=i===0;
+  heroOverlay.classList.toggle('hidden',!first);
+  heroContent.classList.toggle('hidden',!first);
+  heroChairs.classList.toggle('hidden',!first);
+}
+function nextSlide(){goSlide((currentSlide+1)%TOTAL)}
 heroInterval=setInterval(nextSlide,5000);
 heroDotsEl.addEventListener('click',e=>{var d=e.target.closest('.hero-dot');if(!d)return;clearInterval(heroInterval);goSlide(+d.dataset.index);heroInterval=setInterval(nextSlide,5000)});
 
@@ -601,7 +603,6 @@ const revealObserver=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
 // ============ HASH ROUTING + ACTIVE MENU ============
-const allSections=document.querySelectorAll('section[id],.hero');
 const navLinks=document.querySelectorAll('.nav-links a[data-section]');
 const mobileLinks=document.querySelectorAll('.mobile-menu a[data-section]');
 
@@ -612,10 +613,8 @@ const hashObserver=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
     const id=e.target.id;
-    // Update hash without adding to history
     if(id==='hero')history.replaceState(null,null,' ');
     else history.replaceState(null,null,'#'+id);
-    // Highlight menu
     [...navLinks,...mobileLinks].forEach(a=>{
       a.classList.toggle('active',a.dataset.section===id);
     });
@@ -623,7 +622,6 @@ const hashObserver=new IntersectionObserver(entries=>{
 },{threshold:.3,rootMargin:'-10% 0px -60% 0px'});
 
 document.querySelectorAll('section[id]').forEach(s=>hashObserver.observe(s));
-// Also observe hero separately
 hashObserver.observe(document.querySelector('.hero'));
 
 // On load: if URL has hash, scroll to it
@@ -632,17 +630,12 @@ window.addEventListener('load',()=>{
   if(hash){const el=document.querySelector(hash);if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),200);}
 });
 
-// ============ PRODUCTS (Category + Subcategory + Grid) ============
+// ============ CATEGORY CARDS ============
 const catGrid=document.getElementById('catGrid');
-const subcatBar=document.getElementById('subcatBar');
-const productGrid=document.getElementById('productGrid');
-let activeCat='fabric-pu',activeSub='all';
-
-// Render category cards
 function renderCats(){
   catGrid.innerHTML=productCategories.map(c=>{
     const count=allProducts.filter(p=>p.cat===c.id).length;
-    return `<div class="cat-card${c.id===activeCat?' active':''}" data-cat="${c.id}">
+    return `<div class="cat-card" data-cat="${c.id}">
       <div class="cat-card-img"><img src="${c.img}" alt="${c.name}" loading="lazy"></div>
       <div class="cat-card-body"><h4>${c.name}</h4><p>${c.desc}</p></div>
       <span class="cat-card-count">${count} models</span>
@@ -650,68 +643,14 @@ function renderCats(){
   }).join('');
 }
 
-// Render subcategory pills
-function renderSubcats(){
-  const subs=subCats[activeCat];
-  if(!subs||subs.length<=1){subcatBar.innerHTML='';return;}
-  subcatBar.innerHTML=subs.map(s=>`<button class="subcat-pill${s.id===activeSub?' active':''}" data-sub="${s.id}">${s.label}</button>`).join('');
-}
-
-// Render product grid
-function renderProducts(){
-  let items=allProducts.filter(p=>p.cat===activeCat);
-  if(activeSub!=='all')items=items.filter(p=>p.sub===activeSub);
-  if(items.length===0){
-    productGrid.innerHTML='<div class="product-empty">No products match this filter. <a href="#inquiry" style="color:var(--gold)">Send a custom inquiry →</a></div>';
-    return;
-  }
-  productGrid.innerHTML=items.map(p=>`
-    <div class="product-card">
-      <div class="product-card-img"><img src="${p.img}" alt="${p.name}" loading="lazy">${p.badge?`<span class="product-card-badge">${p.badge}</span>`:''}</div>
-      <div class="product-card-body">
-        <h4>${p.name}</h4>
-        <div class="product-card-meta">
-          <span><i class="fa-solid fa-box"></i> MOQ ${p.moq}</span>
-          ${p.sold?`<span><i class="fa-solid fa-fire"></i> ${p.sold} sold</span>`:''}
-        </div>
-      </div>
-      <button class="product-inquire" data-product="${p.name.replace(/'/g,"\\'")}">Inquire This Model</button>
-    </div>
-  `).join('');
-}
-
-// Category click
+// Category card click — navigate to product page
 catGrid.addEventListener('click',e=>{
   const card=e.target.closest('.cat-card');
   if(!card)return;
-  activeCat=card.dataset.cat;
-  activeSub='all';
-  renderCats();
-  renderSubcats();
-  renderProducts();
+  window.location.href='products/'+card.dataset.cat+'.html';
 });
 
-// Subcategory click
-subcatBar.addEventListener('click',e=>{
-  const pill=e.target.closest('.subcat-pill');
-  if(!pill)return;
-  activeSub=pill.dataset.sub;
-  renderSubcats();
-  renderProducts();
-});
-
-// Inquire button click — pre-fill form
-productGrid.addEventListener('click',e=>{
-  const btn=e.target.closest('.product-inquire');
-  if(!btn)return;
-  document.getElementById('fMsg').value=`I'm interested in: ${btn.dataset.product}. Please send quotation with MOQ and FOB price.`;
-  document.getElementById('inquiry').scrollIntoView({behavior:'smooth'});
-});
-
-// Init
 renderCats();
-renderSubcats();
-renderProducts();
 
 // ============ PROCESS ============
 document.getElementById('processTimeline').innerHTML=processSteps.map(s=>`
@@ -746,7 +685,7 @@ document.getElementById('inquiryForm').addEventListener('submit',function(e){
   this.reset();setTimeout(()=>{msg.className='form-msg';msg.textContent=''},5000);
 });
 
-// Smooth scroll (skip nav-cta behavior change)
+// ============ SMOOTH SCROLL ============
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
   e.preventDefault();
   const target=document.querySelector(a.getAttribute('href'));
