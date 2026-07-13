@@ -94,7 +94,7 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 /* ========================================
    PAGE HERO
    ======================================== */
-.page-hero{padding:140px 48px 60px;text-align:center;position:relative;overflow:hidden;background:rgba(26,26,28,.75)}
+.page-hero{padding:140px 48px 60px;text-align:center;position:relative;overflow:hidden;background:transparent;margin-top:0}
 .page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23c9a050' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;z-index:0}
 .page-hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto}
 .page-hero-eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:12px;font-weight:600}
@@ -113,11 +113,18 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 /* ========================================
    SUBCAT PILLS + PRODUCT GRID
    ======================================== */
-.content-area{max-width:1280px;margin:0 auto;padding:32px 48px 64px}
+
 .subcat-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .subcat-pill{padding:7px 16px;border-radius:100px;font-size:.8rem;font-weight:500;background:var(--bg);color:var(--text-dim);border:1px solid var(--border);cursor:pointer;transition:all .25s}
 .subcat-pill:hover{border-color:var(--gold-dim);color:var(--gold)}
 .subcat-pill.active{background:var(--gold);color:#1a1a1c;border-color:var(--gold);font-weight:600}
+
+/* ========================================
+   CONTENT AREA
+   ======================================== */
+.content-area{padding:0 48px 80px;position:relative;z-index:1}
+
+@media(max-width:768px){.content-area{padding:0 20px 60px}}
 
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
 .product-card{background:rgba(38,38,40,.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:transform .35s,box-shadow .35s;box-shadow:var(--shadow-sm);position:relative}
@@ -183,7 +190,16 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
 }
 @media(max-width:600px){
-  .product-grid{grid-template-columns:1fr}
+  
+
+/* ========================================
+   CONTENT AREA
+   ======================================== */
+.content-area{padding:0 48px 80px;position:relative;z-index:1}
+
+@media(max-width:768px){.content-area{padding:0 20px 60px}}
+
+.product-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
 }
@@ -279,10 +295,10 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 <!-- ========================================
      PRODUCTS
      ======================================== -->
-<section class="content-area">
+<section class="content-area"><div class="content-area-inner">
   <div class="subcat-bar" id="subcatBar"></div>
   <div class="product-grid" id="productGrid"></div>
-</section>
+</div></section>
 
 <!-- ========================================
      INQUIRY
