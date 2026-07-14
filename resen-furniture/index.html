@@ -190,16 +190,20 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
    ======================================== */
 
 /* Testimonial strip */
-.testi-strip{background:url(https://marvelpocky.github.io/cola-pages/resen-furniture/images/reviews-collage.png) center/cover;position:relative;padding:48px 24px}
-.testi-strip::before{content:'';position:absolute;inset:0;background:rgba(26,26,28,.88);z-index:0}
-.testi-strip-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.testi-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px 20px;text-align:center;backdrop-filter:blur(8px)}
-.testi-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:2px solid var(--gold)}
+.testi-strip{background:url(https://marvelpocky.github.io/cola-pages/resen-furniture/images/reviews-collage.png) center/cover;position:relative;padding:80px 24px}
+.testi-strip::before{content:'';position:absolute;inset:0;background:rgba(26,26,28,.75);z-index:0}
+.testi-strip-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
+.testi-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.testi-card{background:rgba(20,20,22,.85);border:1px solid var(--border);border-radius:14px;padding:32px 24px;text-align:center;backdrop-filter:blur(6px)}
+.testi-avatar{width:60px;height:60px;border-radius:50%;overflow:hidden;margin:0 auto 16px;border:2px solid var(--gold)}
 .testi-avatar img{width:100%;height:100%;object-fit:cover}
-.testi-text{font-size:.85rem;color:var(--text-dim);line-height:1.6;margin-bottom:12px;font-style:italic}
-.testi-name{font-weight:600;color:#fff;font-size:.88rem}
-.testi-role{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-top:3px}
-@media(max-width:768px){.testi-strip-inner{grid-template-columns:1fr}}
+.testi-text{font-size:.88rem;color:#ccc;line-height:1.65;margin-bottom:16px;font-style:italic}
+.testi-name{font-weight:600;color:#fff;font-size:.9rem}
+.testi-role{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+.testi-dots{display:flex;justify-content:center;gap:8px;margin-top:28px}
+.testi-dots .dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .3s}
+.testi-dots .dot.active{background:var(--gold)}
+@media(max-width:768px){.testi-cards{grid-template-columns:1fr}}
 
 /* ========================================
    INQUIRY CONTENT
@@ -389,24 +393,29 @@ button{cursor:pointer;border:none;font-family:inherit;background:none}
 
 <div class="testi-strip">
   <div class="testi-strip-inner">
-    <div class="testi-card">
-      <div class="testi-avatar"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/images/review-john.jpg" alt="John Doe" loading="lazy"></div>
-      <p class="testi-text">"Factory production is efficient and offers a variety of customization options. Delivery on time, product safety delivery."</p>
-      <div class="testi-name">John Doe</div>
-      <div class="testi-role">Wholesaler</div>
+    <span class="section-tag reveal">Client Reviews</span>
+    <h2 class="section-title reveal reveal-d1">What Our<br>Clients Say</h2>
+    <div class="testi-cards">
+      <div class="testi-card">
+        <div class="testi-avatar"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/images/review-john.jpg" alt="John Doe" loading="lazy"></div>
+        <p class="testi-text">"Factory production is efficient and offers a variety of customization options. Delivery on time, product safety delivery."</p>
+        <div class="testi-name">John Doe</div>
+        <div class="testi-role">Wholesaler</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-avatar"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/images/review-eliza.jpg" alt="Eliza Evans" loading="lazy"></div>
+        <p class="testi-text">"The factory fulfilled all orders on time. Chair style is simple and fashionable, suitable for multiple scenes. No damage, prompt response."</p>
+        <div class="testi-name">Eliza Evans</div>
+        <div class="testi-role">Manager</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-avatar"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/images/review-sophie.jpg" alt="Farmer Sophie" loading="lazy"></div>
+        <p class="testi-text">"The supplier factory has advanced production lines. The style of the chair is simple and generous, strong and durable. Rich in style and variety."</p>
+        <div class="testi-name">Farmer Sophie</div>
+        <div class="testi-role">Manager</div>
+      </div>
     </div>
-    <div class="testi-card">
-      <div class="testi-avatar"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/images/review-eliza.jpg" alt="Eliza Evans" loading="lazy"></div>
-      <p class="testi-text">"The factory fulfilled all orders on time. Chair style is simple and fashionable, suitable for multiple scenes. No damage, prompt response."</p>
-      <div class="testi-name">Eliza Evans</div>
-      <div class="testi-role">Manager</div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-avatar"><img src="https://marvelpocky.github.io/cola-pages/resen-furniture/images/review-sophie.jpg" alt="Farmer Sophie" loading="lazy"></div>
-      <p class="testi-text">"The supplier factory has advanced production lines. The style of the chair is simple and generous, strong and durable. Rich in style and variety."</p>
-      <div class="testi-name">Farmer Sophie</div>
-      <div class="testi-role">Manager</div>
-    </div>
+    <div class="testi-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
   </div>
 </div>
 
